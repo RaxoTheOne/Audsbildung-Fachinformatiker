@@ -27,7 +27,7 @@ int main()
     {
         note = 5;
     }
-    else if (punkte = 0)
+    else if (punkte == 0)
     {
         note = 6;
     }
