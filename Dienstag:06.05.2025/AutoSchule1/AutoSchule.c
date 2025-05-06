@@ -16,7 +16,7 @@ int main()
 
     char hilf[20];
     FILE *fp;
-    char datname[] = "C:\\Mist\\auto.dat";
+    char datname[] = "auto.dat";
 
     printf("Fabrikat: ");
     gets(Auto.fabrikat);

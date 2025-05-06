@@ -45,7 +45,7 @@ int main()
         printf("Datei konnte nicht geöffnet werden.\n");
         return 1;
     }
-    int zeahler = 0;
+    int zaehler = 0;
     if ((fp = fopen(datname, "r")) != NULL)
     {
         while((fread(&f, sizeof(Fahrzeug), 1, fp)) ==1)
