@@ -18,8 +18,6 @@ int main()
     char datname[] = "auto.dat";
     FILE *fp;
 
-    // Endloschleife für fortlaufende Eingabe
-
     printf("Hersteller: ");
     fgets(f.hersteller, sizeof(f.hersteller), stdin);
     f.hersteller[strcspn(f.hersteller, "\n")] = 0;
