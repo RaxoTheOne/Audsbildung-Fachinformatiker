@@ -45,6 +45,7 @@ void produkte_hinzufuegen(char *dateiname)
     if (d != NULL)
     {
         char produkname[30];
+        int preis;
         do
         {
             printf("\nProduktname:");
@@ -57,7 +58,11 @@ void produkte_hinzufuegen(char *dateiname)
                 fclose(d);
                 break;
             }
+            printf("Preis:");
+            scanf("%d", &preis);
+
             fprintf(d, "%s", produkname);
+            fprintf(d, "%d\n", preis);
 
         } while (strcmp(produkname, "ende") != 0);
     }
@@ -72,11 +77,16 @@ void produkte_listen(char *dateiname)
 
         printf("Die gespeicherten Produkte:\n");
         char puffer[200];
+        int preispuffer;
+
         while (fgets(puffer, sizeof(puffer), d) != NULL)
             ;
 
         //
-        puffer[strlen(puffer)] = '\n';
-        printf("- %s", puffer);
+        puffer[strlen(puffer)-1] = '\0';
+        if (fscanf(d, "%d", &preispuffer) == 1)
+        {
+            printf("- %s Preis: %d\n", puffer, preispuffer);
+        }
     }
 }
