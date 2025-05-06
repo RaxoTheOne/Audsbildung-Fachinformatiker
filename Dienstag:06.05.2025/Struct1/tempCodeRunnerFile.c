@@ -47,18 +47,12 @@ int main()
         printf("Datei konnte nicht geöffnet werden.\n");
         return 1;
     }
-
     int zaehler = 0;
-
     if ((fp = fopen(datname, "r")) != NULL)
     {
         while ((fread(&f, sizeof(Fahrzeug), 1, fp)) == 1)
-        {
-            printf("\n%s %s %d %.2f\n",
-                   f.hersteller, f.modell, f.baujahr, f.höchstgeschwindigkeit);
-            zaehler++;
-        }
-        printf("%d Fahrzeuge erfasst!\n", zaehler);
+            printf("\n%s %s %d %.2f\n", f.hersteller, f.modell, f.baujahr, f.höchstgeschwindigkeit);
+        zaehler++;
         fclose(fp);
     }
     return 0;
