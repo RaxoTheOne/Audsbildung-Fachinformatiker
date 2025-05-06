@@ -13,17 +13,18 @@ int main()
 {
     Person p;
     char hilf[20];
-    FILE * fp;
+    FILE *fp;
     char datname[] = "/Users/benjamingayda-knop/Audsbildung Fachinformatiker /Dienstag:06.05.2025/Datenbearbeitung.3/person.dat";
-
+    
     printf("Vorname: ");
     gets(p.vorname);
     printf("Nachname: ");
     gets(p.nachname);
     printf("Alter: ");
-    // scanf("%d", &p.alter);
+    //scanf("%d", &p.alter);
     gets(hilf);
     p.alter = atoi(hilf);
+    
 
     if ((fp = fopen(datname, "w")) != NULL)
     {
@@ -31,12 +32,11 @@ int main()
 
         fclose(fp);
     }
-    if ((fp = fopen(datname, "r")) != NULL)
-    {
+    if ((fp = fopen(datname, "r")) != NULL){
         fread(&p, sizeof(Person), 1, fp);
 
         fclose(fp);
     }
-    printf("\n%s %s %d\n", p.vorname, p.nachname, p.alter);
-    return 0;
+       printf("\n%s %s %d\n", p.vorname, p.nachname, p.alter);
+       return 0;
 }

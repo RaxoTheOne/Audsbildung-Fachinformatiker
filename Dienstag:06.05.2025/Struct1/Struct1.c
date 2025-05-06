@@ -2,32 +2,34 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct fahrzeug{
+struct fahrzeug
+{
     int baujahr;
     char hersteller[30];
     char modell[30];
     float höchstgeschwindigkeit;
 };
 typedef struct fahrzeug Fahrzeug;
-int main(){
+int main()
+{
 
     Fahrzeug f;
     char eingabe[20];
     char datname[] = "auto.dat";
-    FILE * fp;
+    FILE *fp;
 
     printf("Hersteller: ");
     fgets(f.hersteller, sizeof(f.hersteller), stdin);
     f.hersteller[strcspn(f.hersteller, "\n")] = 0;
-   
+
     printf("Modell: ");
     fgets(f.modell, sizeof(f.modell), stdin);
     f.modell[strcspn(f.modell, "\n")] = 0;
-    
+
     printf("Baujahr: ");
     fgets(eingabe, sizeof(eingabe), stdin);
     f.baujahr = atoi(eingabe);
-    
+
     printf("Höchstgeschwindigkeit: ");
     fgets(eingabe, sizeof(eingabe), stdin);
     f.höchstgeschwindigkeit = atof(eingabe);
@@ -38,10 +40,17 @@ int main(){
 
         fclose(fp);
     }
+    else
+    {
+        printf("Datei konnte nicht geöffnet werden.\n");
+        return 1;
+    }
     if ((fp = fopen(datname, "r")) != NULL)
     {
         fread(&f, sizeof(Fahrzeug), 1, fp);
 
         fclose(fp);
     }
-}   
+    printf("\n%s %s %d %.2f\n", f.hersteller, f.modell, f.baujahr, f.höchstgeschwindigkeit);
+    return 0;
+}
