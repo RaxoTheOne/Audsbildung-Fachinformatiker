@@ -45,12 +45,13 @@ int main()
         printf("Datei konnte nicht geöffnet werden.\n");
         return 1;
     }
+    int zeahler = 0;
     if ((fp = fopen(datname, "r")) != NULL)
     {
-        fread(&f, sizeof(Fahrzeug), 1, fp);
+        while((fread(&f, sizeof(Fahrzeug), 1, fp)) ==1)
+            printf("\n%s %s %d %.2f\n", f.hersteller, f.modell, f.baujahr, f.höchstgeschwindigkeit);
 
         fclose(fp);
     }
-    printf("\n%s %s %d %.2f\n", f.hersteller, f.modell, f.baujahr, f.höchstgeschwindigkeit);
     return 0;
 }
