@@ -1,6 +1,0 @@
-cd "/Users/benjamingayda-knop/Audsbildung Fachinformatiker /Montag:05.05.2025/Datenbearbeitung2Schule/" && gcc Datenbearbeitung2Schule.c -o Datenbearbeitung2Schule && "/Users/benjamingayda-knop/Audsbildung Fachinformatiker /Montag:05.05.2025/Datenbearbeitung2Schule/"Datenbearbeitung2SchuleMilchcd "/Users/benjamingayda-knop/Audsbildung Fachinformatiker /Montag:05.05.2025/Datenbearbeitung2Schule/" && gcc Datenbearbeitung2Schule.c -o Datenbearbeitung2Schule && "/Users/benjamingayda-knop/Audsbildung Fachinformatiker /Montag:05.05.2025/Datenbearbeitung2Schule/"Datenbearbeitung2SchuleBlumecd "/Users/benjamingayda-knop/Audsbildung Fachinformatiker /Montag:05.05.2025/Datenbearbeitung2Schule/" && gcc Datenbearbeitung2Schule.c -o Datenbearbeitung2Schule && "/Users/benjamingayda-knop/Audsbildung Fachinformatiker /Montag:05.05.2025/Datenbearbeitung2Schule/"Datenbearbeitung2SchuleGlockencd "/Users/benjamingayda-knop/Audsbildung Fachinformatiker /Montag:05.05.2025/Datenbearbeitung2Schule/" && gcc Datenbearbeitung2Schule.c -o Datenbearbeitung2Schule && "/Users/benjamingayda-knop/Audsbildung Fachinformatiker /Montag:05.05.2025/Datenbearbeitung2Schule/"Datenbearbeitung2SchuleCola150
-
-Cola120
-Fante130
-Sprite140
-Eistee250
