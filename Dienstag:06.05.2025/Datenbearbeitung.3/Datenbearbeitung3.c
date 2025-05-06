@@ -13,7 +13,7 @@ int main()
 {
     Person p;
     char hilf[20];
-    FILE *fp;
+    FILE * fp;
     char datname[] = "/Users/benjamingayda-knop/Audsbildung Fachinformatiker /Dienstag:06.05.2025/Datenbearbeitung.3/person.dat";
 
     printf("Vorname: ");
