@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 void menue();
 
@@ -44,10 +45,10 @@ void produkte_hinzufuegen(char *dateiname)
     if (d != NULL)
     {
         char produkname[30];
-        fflush(stdin);
         do
         {
             printf("\nProduktname:");
+            fpurge(stdin);
             gets(produkname);
 
             if (strcmp(produkname, "ende") == 0)
@@ -61,6 +62,7 @@ void produkte_hinzufuegen(char *dateiname)
         } while (strcmp(produkname, "ende") != 0);
     }
 }
+
 void produkte_listen(char *dateiname)
 {
     FILE *d = fopen(dateiname, "r");
@@ -74,7 +76,7 @@ void produkte_listen(char *dateiname)
             ;
 
         //
-
-        printf("- %s\n", puffer);
+        puffer[strlen(puffer)] = '\n';
+        printf("- %s", puffer);
     }
 }
