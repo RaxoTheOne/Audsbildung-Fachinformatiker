@@ -1,0 +1,29 @@
+" && gcc tempCodeRunnerFile.c -o tempCodeRunnerFi 147579855547779999984517120.00
+ && "/Users/benjamingayda-knop/Audsbildung Fachin 147579855547779999984517120.00
+rmatiker /Dienstag:06.05.2025/Produktinformation. 1.00
+tempCodeRunnerFile 147579855547779999984517120.00
+ "/Users/benjamingayda-knop/Audsbildung Fachinfor 147579855547779999984517120.00
+tiker /Dienstag:06.05.2025/Produktinformation.1/" 147579855547779999984517120.00
+ gcc Produktinformation.c -o Produktinformation & 147579855547779999984517120.00
+/Users/benjamingayda-knop/Audsbildung Fachinforma 147579855547779999984517120.00
+ker /Dienstag:06.05.2025/Produktinformation.1/"Pr 147579855547779999984517120.00
+uktinformation 147579855547779999984517120.00
+ "/Users/benjamingayda-knop/Audsbildung Fachinfor 147579855547779999984517120.00
+tiker /Dienstag:06.05.2025/Produktinformation.1/" 147579855547779999984517120.00
+ gcc Produktinformation.c -o Produktinformation & 147579855547779999984517120.00
+/Users/benjamingayda-knop/Audsbildung Fachinforma 147579855547779999984517120.00
+ker /Dienstag:06.05.2025/Produktinformation.1/"Pr 147579855547779999984517120.00
+uktinformation 147579855547779999984517120.00
+ "/Users/benjamingayda-knop/Audsbildung Fachinfor 147579855547779999984517120.00
+tiker /Dienstag:06.05.2025/Produktinformation.1/" 147579855547779999984517120.00
+ gcc Produktinformation.c -o Produktinformation & 147579855547779999984517120.00
+/Users/benjamingayda-knop/Audsbildung Fachinforma 147579855547779999984517120.00
+ker /Dienstag:06.05.2025/Produktinformation.1/"Pr 147579855547779999984517120.00
+uktinformation 147579855547779999984517120.00
+ "/Users/benjamingayda-knop/Audsbildung Fachinfor 147579855547779999984517120.00
+tiker /Dienstag:06.05.2025/Produktinformation.1/" 147579855547779999984517120.00
+ gcc Produktinformation.c -o Produktinformation & 147579855547779999984517120.00
+/Users/benjamingayda-knop/Audsbildung Fachinforma 147579855547779999984517120.00
+ker /Dienstag:06.05.2025/Produktinformation.1/"Pr 147579855547779999984517120.00
+uktinformation 1.00
+Klopapier 1.70
