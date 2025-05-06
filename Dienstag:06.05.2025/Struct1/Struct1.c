@@ -13,7 +13,7 @@ int main(){
 
     Fahrzeug f;
     char eingabe[20];
-    char datname[] = "/Users/benjamingayda-knop/Audsbildung Fachinformatiker /Dienstag:06.05.2025/Struct1/Struct1.c/auto.dat";
+    char datname[] = "auto.dat";
     FILE * fp;
 
     printf("Hersteller: ");
