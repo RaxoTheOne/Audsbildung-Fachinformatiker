@@ -32,7 +32,7 @@ int main()
     gets(hilf);
     Auto.hg = atoi(hilf);
 
-    if( ( fp = fopen(datname, "a")) != NULL )
+    if( ( fp = fopen(datname, "w")) != NULL )
     {
         fwrite(&Auto, sizeof(Auto), 1, fp);
 
