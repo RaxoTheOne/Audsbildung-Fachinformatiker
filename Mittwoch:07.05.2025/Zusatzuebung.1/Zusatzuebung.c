@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
 void passwortVerschluesseln(char eingabe[], char verschluesselt[])
@@ -12,13 +11,15 @@ void passwortVerschluesseln(char eingabe[], char verschluesselt[])
 }
 void passwortEntschluesseln(char eingabe[], char entschluesselt[])
 {
-    for (int i = 0; eingabe[i] != '\0'; i++){
+    for (int i = 0; eingabe[i] != '\0'; i++)
+    {
         entschluesselt[i] = eingabe[i] - 1;
     }
     entschluesselt[strlen(eingabe)] = '\0';
 }
 
-int main(){
+int main()
+{
     char benutzername[50];
     char passwort[50];
     char verschluesselt[50];
