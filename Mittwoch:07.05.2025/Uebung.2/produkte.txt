@@ -6,3 +6,4 @@
 6;Milchcreme;2.40
 7;Bananen;2.15
 8;Spargel;4.60
+9;Humus;0.99

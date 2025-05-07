@@ -58,9 +58,6 @@ void menue(void)
     printf("3. Produkt suchen\n");
     printf("4. Ende\n");
 }
-void such_menue(void)
-{
-}
 void produkte_hinzufuegen(char *dateiname)
 {
     FILE *d = fopen(dateiname, "a");

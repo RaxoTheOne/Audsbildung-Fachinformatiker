@@ -12,8 +12,8 @@ int auswahl;
 
 struct produkt
 {
-    int nummer;
     char produktname[50];
+    int artikelnummer;
     float preis;
 };
 typedef struct produkt Produkt;
@@ -49,70 +49,95 @@ int main()
 
     return 0;
 }
+
 void menue(void)
 {
     printf("\n--- Produktverwaltung ---\n");
     printf("1. Produkte Hinzufuegen\n");
     printf("2. Produkte Anzeigen\n");
-    printf("3. Ende\n");
+    printf("3. Produkt suchen\n");
+    printf("4. Ende\n");
 }
-
 void produkte_hinzufuegen(char *dateiname)
 {
     FILE *d = fopen(dateiname, "a");
-
-    if (d != NULL)
-    {
-        char produktname[100];
-        do
-        {
-            printf("Produktname (\"ende\" zum Beenden): ");
-            fgets(produktname, sizeof(produktname), stdin);
-
-            // Zeilenumbruch entfernen
-            size_t len = strlen(produktname);
-            if (len > 0 && produktname[len - 1] == '\n')
-            {
-                produktname[len - 1] = '\0';
-            }
-
-            if (strcmp(produktname, "ende") == 0)
-            {
-                break;
-            }
-
-            fprintf(d, "%s\n", produktname);
-
-        } while (1);
-
-        fclose(d);
-    }
-    else
+    if (d == NULL)
     {
         printf("Fehler beim Öffnen der Datei.\n");
+        return;
     }
+
+    Produkt p;
+    int letzteNummer = 0;
+
+    // Letzte Artikelnummer ermitteln
+    FILE *lesen = fopen(dateiname, "r");
+    if (lesen != NULL)
+    {
+        char zeile[200];
+        while (fgets(zeile, sizeof(zeile), lesen) != NULL)
+        {
+            int nummer;
+            if (sscanf(zeile, "%d;", &nummer) == 1)
+            {
+                if (nummer > letzteNummer)
+                    letzteNummer = nummer;
+            }
+        }
+        fclose(lesen);
+    }
+
+    while (1)
+    {
+        char eingabe[100];
+
+        printf("Produktname (\"ende\" zum Beenden): ");
+        fgets(p.produktname, sizeof(p.produktname), stdin);
+        p.produktname[strcspn(p.produktname, "\n")] = 0;
+
+        if (strcmp(p.produktname, "ende") == 0)
+            break;
+
+        printf("Preis: ");
+        fgets(eingabe, sizeof(eingabe), stdin);
+        p.preis = atof(eingabe);
+
+        p.artikelnummer = ++letzteNummer;
+
+        fprintf(d, "%d;%s;%.2f\n", p.artikelnummer, p.produktname, p.preis);
+        printf("Produkt gespeichert.\n");
+    }
+
+    fclose(d);
 }
+
 void produkte_listen(char *dateiname)
 {
     FILE *d = fopen(dateiname, "r");
-
-    if (d != NULL)
-    {
-        char zeile[100];
-        printf("\n--- Produktliste ---\n");
-
-        while (fgets(zeile, sizeof(zeile), d) != NULL)
-        {
-            printf("%s", zeile);
-        }
-
-        fclose(d);
-    }
-    else
+    if (d == NULL)
     {
         printf("Fehler beim Öffnen der Datei.\n");
+        return;
     }
+
+    Produkt p;
+    char zeile[200];
+    printf("\n--- Produktliste ---\n");
+    while (fgets(zeile, sizeof(zeile), d) != NULL)
+    {
+        if (scanf(zeile, "%d;%49[^;];%f", &p.artikelnummer, p.produktname, &p.preis) == 3)
+        {
+            printf("Nr: %d | Name: %s | Preis: %.2f €\n", p.artikelnummer, p.produktname, p.preis);
+        }
+        else
+        {
+            printf("Fehler beim Lesen der Datei.\n");
+        }
+    }
+
+    fclose(d);
 }
+
 void produkte_suchen(char *dateiname)
 {
     FILE *d = fopen(dateiname, "r");
@@ -122,28 +147,88 @@ void produkte_suchen(char *dateiname)
         return;
     }
 
-    char suchbegriff[100];
-    char zeile[100];
+    int kriterium;
+    printf("\n---Suchkriterium:---\n");
+    printf("1. Artikelnummer\n");
+    printf("2. Produktname\n");
+    printf("3. Preisspanne\n");
+    printf("Ihre Wahl: ");
+    scanf("%d", &kriterium);
+    fpurge(stdin);
+
+    char zeile[200];
+    Produkt p;
     int gefunden = 0;
 
-    printf("Gib den Produktnamen oder ein Teil davon ein: ");
-    fgets(suchbegriff, sizeof(suchbegriff), stdin);
-    suchbegriff[strcspn(suchbegriff, "\n")] = 0;
-
-    printf("\n---Suchergebnisse---\n");
-
-    while (fgets(zeile, sizeof(zeile), d) != NULL)
+    if (kriterium == 1) // Artikelnummer
     {
-        if (strstr(zeile, suchbegriff) != NULL)
+        int suchnummer;
+        printf("Gib die Artikelnummer ein: ");
+        scanf("%d", &suchnummer);
+
+        while (fgets(zeile, sizeof(zeile), d) != NULL)
         {
-            printf("%s", zeile);
-            gefunden = 1;
+            if (sscanf(zeile, "%d;%49[^;];%f", &p.artikelnummer, p.produktname, &p.preis) == 3)
+            {
+                if (p.artikelnummer == suchnummer)
+                {
+                    printf("Nr: %d | Name: %s | Preis: %.2f €\n", p.artikelnummer, p.produktname, p.preis);
+                    gefunden = 1;
+                }
+            }
         }
     }
+    else if (kriterium == 2) // Produktname
+    {
+        char suchbegriff[50];
+        printf("Gib den Produktnamen oder ein Teil davon ein: ");
+        fgets(suchbegriff, sizeof(suchbegriff), stdin);
+        suchbegriff[strcspn(suchbegriff, "\n")] = 0;
 
+        printf("\n--- Suchergebnisse ---\n");
+
+        while (fgets(zeile, sizeof(zeile), d) != NULL)
+        {
+            if (sscanf(zeile, "%d;%49[^;];%f", &p.artikelnummer, p.produktname, &p.preis) == 3)
+            {
+                if (strstr(p.produktname, suchbegriff) != NULL)
+                {
+                    printf("Nr: %d | Name: %s | Preis: %.2f €\n", p.artikelnummer, p.produktname, p.preis);
+                    gefunden = 1;
+                }
+            }
+        }
+    }
+    else if (kriterium == 3) // Preisspanne
+    {
+        float preismin, preismax;
+        printf("Gib den Mindestpreis ein: ");
+        scanf("%f", &preismin);
+        printf("Gib den Maximalpreis ein: ");
+        scanf("%f", &preismax);
+        getchar();
+        while (fgets(zeile, sizeof(zeile), d) != NULL)
+        {
+            if (sscanf(zeile, "%d;%49[^;];%f", &p.artikelnummer, p.produktname, &p.preis) == 3)
+            {
+                if (p.preis >= preismin && p.preis <= preismax)
+                {
+                    printf("Nr: %d | Name: %s | Preis: %.2f €\n", p.artikelnummer, p.produktname, p.preis);
+                    gefunden = 1;
+                }
+            }
+        }
+    }
+    else
+    {
+        printf("Ungültige Auswahl!\n");
+        fclose(d);
+        return;
+    }
     if (!gefunden)
     {
-        printf("Kein passendes Produkt gefudnen!\n");
+        printf("Kein passendes Produkt gefunden!\n");
     }
+
     fclose(d);
 }
