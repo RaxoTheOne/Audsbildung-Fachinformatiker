@@ -1,1 +1,5 @@
 1;Honig;2.80
+2;Marmelade;2.70
+3;Marmelade;2.30
+4;Erdnussbutter;2.50
+5;Eisbergsalat;1.60
