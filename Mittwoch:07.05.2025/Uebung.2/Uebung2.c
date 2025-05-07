@@ -58,8 +58,8 @@ void menue(void)
     printf("3. Produkt suchen\n");
     printf("4. Ende\n");
 }
-void such_menue(void){
-    
+void such_menue(void)
+{
 }
 void produkte_hinzufuegen(char *dateiname)
 {
@@ -128,9 +128,13 @@ void produkte_listen(char *dateiname)
     printf("\n--- Produktliste ---\n");
     while (fgets(zeile, sizeof(zeile), d) != NULL)
     {
-        if (scanf(zeile, "%d;%49[^;];%f", &p.artikelnummer, p.produktname, &p.preis) == 3)
+        if (sscanf(zeile, "%d;%49[^;];%f", &p.artikelnummer, p.produktname, &p.preis) == 3)
         {
             printf("Nr: %d | Name: %s | Preis: %.2f €\n", p.artikelnummer, p.produktname, p.preis);
+        }
+        else
+        {
+            printf("Fehler beim Lesen der Datei.\n");
         }
     }
 
@@ -159,7 +163,7 @@ void produkte_suchen(char *dateiname)
     Produkt p;
     int gefunden = 0;
 
-    if (kriterium == 1)  // Artikelnummer
+    if (kriterium == 1) // Artikelnummer
     {
         int suchnummer;
         printf("Gib die Artikelnummer ein: ");
@@ -177,7 +181,7 @@ void produkte_suchen(char *dateiname)
             }
         }
     }
-    else if (kriterium == 2)  // Produktname
+    else if (kriterium == 2) // Produktname
     {
         char suchbegriff[50];
         printf("Gib den Produktnamen oder ein Teil davon ein: ");
@@ -198,7 +202,7 @@ void produkte_suchen(char *dateiname)
             }
         }
     }
-    else if (kriterium == 3)  // Preisspanne
+    else if (kriterium == 3) // Preisspanne
     {
         float preismin, preismax;
         printf("Gib den Mindestpreis ein: ");
@@ -231,4 +235,3 @@ void produkte_suchen(char *dateiname)
 
     fclose(d);
 }
-
