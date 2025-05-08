@@ -125,7 +125,7 @@ void produkte_listen(char *dateiname)
     printf("\n--- Produktliste ---\n");
     while (fgets(zeile, sizeof(zeile), d) != NULL)
     {
-        if (sscanf(zeile, "%d;%49[^;];%f", &p.artikelnummer, p.produktname, &p.preis) == 3)
+        if (sscanf(zeile, "%d;%49s[^;];%f", &p.artikelnummer, p.produktname, &p.preis) == 3)
         {
             printf("Nr: %d | Name: %s | Preis: %.2f €\n", p.artikelnummer, p.produktname, p.preis);
         }
@@ -168,7 +168,7 @@ void produkte_suchen(char *dateiname)
 
         while (fgets(zeile, sizeof(zeile), d) != NULL)
         {
-            if (sscanf(zeile, "%d;%49[^;];%f", &p.artikelnummer, p.produktname, &p.preis) == 3)
+            if (sscanf(zeile, "%d;%49s[^;];%f", &p.artikelnummer, p.produktname, &p.preis) == 3)
             {
                 if (p.artikelnummer == suchnummer)
                 {
@@ -189,7 +189,7 @@ void produkte_suchen(char *dateiname)
 
         while (fgets(zeile, sizeof(zeile), d) != NULL)
         {
-            if (sscanf(zeile, "%d;%49[^;];%f", &p.artikelnummer, p.produktname, &p.preis) == 3)
+            if (sscanf(zeile, "%d;%49s[^;];%f", &p.artikelnummer, p.produktname, &p.preis) == 3)
             {
                 if (strstr(p.produktname, suchbegriff) != NULL)
                 {
@@ -209,7 +209,7 @@ void produkte_suchen(char *dateiname)
         getchar();
         while (fgets(zeile, sizeof(zeile), d) != NULL)
         {
-            if (sscanf(zeile, "%d;%49[^;];%f", &p.artikelnummer, p.produktname, &p.preis) == 3)
+            if (sscanf(zeile, "%d;%49s[^;];%f", &p.artikelnummer, p.produktname, &p.preis) == 3)
             {
                 if (p.preis >= preismin && p.preis <= preismax)
                 {
