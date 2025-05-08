@@ -7,3 +7,7 @@
 7;Bananen;2.15
 8;Spargel;4.60
 9;Humus;0.99
+10;Eistee;1.45
+11;Rhabarba;1.65
+12;Kartoffelchips;3.75
+13;Eis;2.50
