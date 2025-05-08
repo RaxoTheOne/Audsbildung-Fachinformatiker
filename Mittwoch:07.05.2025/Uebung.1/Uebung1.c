@@ -33,24 +33,35 @@ int main()
 
     printf("Gib den Betrag in Euro ein: ");
     scanf("%f", &d.euroBetrag);
-    
-    if((fp = fopen(datname, "a")) != NULL){
+
+    d.umgerechneterBetrag = d.kurs * d.euroBetrag;
+
+    if ((fp = fopen(datname, "a")) != NULL)
+    {
         fwrite(&d, sizeof(Devisen), 1, fp);
 
         fclose(fp);
     }
-    else{
+    else
+    {
         printf("Datei konnte nicht geöffnet werden!\n");
         return 1;
     }
-    if((fp = fopen(datname, "r")) != 0){
-        while((fread(&d, sizeof(Devisen), 1, fp)) == 1){
+    if ((fp = fopen(datname, "r")) != 0)
+    {
+        while ((fread(&d, sizeof(Devisen), 1, fp)) == 1)
+        {
             printf("Land: %s\n", d.land);
             printf("Wechselkürzel: %s\n", d.wechselkuerzel);
-            printf("Kurs: %f\n", d.kurs);
-            printf("Betrag: %f\n", d.euroBetrag);
+            printf("Kurs: %.2f\n", d.kurs);
+            printf("Euro-Betrag: %.2f\n", d.euroBetrag);
+            printf("Umgerechneter Betrag: %.2f\n", d.umgerechneterBetrag);
         }
-        printf("Daten erfasst!\n");
         fclose(fp);
+    }else
+    {
+        printf("Datei konnte nicht geöffnet werden!\n");
+        return 1;
     }
+    printf("Die Datei wurde erfolgreich geschrieben und gelesen.\n");
 }
