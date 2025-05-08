@@ -71,11 +71,11 @@ void produkte_hinzufuegen(char *dateiname)
     int letzteNummer = 0;
 
     // Letzte Artikelnummer ermitteln
-    FILE *lesen = fopen(dateiname, "r");
-    if (lesen != NULL)
+    FILE *read = fopen(d, "r");
+    if (read != NULL)
     {
         char zeile[200];
-        while (fgets(zeile, sizeof(zeile), lesen) != NULL)
+        while (fgets(zeile, sizeof(zeile), read) != NULL)
         {
             int nummer;
             if (sscanf(zeile, "%d;", &nummer) == 1)
@@ -84,7 +84,7 @@ void produkte_hinzufuegen(char *dateiname)
                     letzteNummer = nummer;
             }
         }
-        fclose(lesen);
+        fclose(read);
     }
 
     while (1)
