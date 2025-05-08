@@ -58,7 +58,8 @@ int main()
             printf("Umgerechneter Betrag: %.2f\n", d.umgerechneterBetrag);
         }
         fclose(fp);
-    }else
+    }
+    else
     {
         printf("Datei konnte nicht geöffnet werden!\n");
         return 1;
