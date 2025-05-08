@@ -11,3 +11,4 @@
 11;Rhabarba;1.65
 12;Kartoffelchips;3.75
 13;Eis;2.50
+14;Mehl;0.70
