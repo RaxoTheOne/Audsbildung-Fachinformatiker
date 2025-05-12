@@ -23,7 +23,7 @@ int main() {
     // Aufgabe 3: countCapitals()
     char text[100];
     printf("Bitte geben Sie einen Text ein: ");
-    fgets(text, sizeof(text), stdin);
+    scanf(" %[^\n]", text); // Eingabe mit Leerzeichen und Zeilenumbruch
     int grossbuchstaben = countCapitals(text);
     printf("Anzahl der Großbuchstaben: %d\n\n", grossbuchstaben);
 
