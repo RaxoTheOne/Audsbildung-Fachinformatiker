@@ -2,9 +2,10 @@
 #include <string.h>
 
 // Strukturdefinition
-struct Firma {
-    char name[66];     // 65 + 1 für '\0'
-    char ort[66];      // 65 + 1 für '\0'
+struct Firma
+{
+    char name[66]; // 65 + 1 für '\0'
+    char ort[66];  // 65 + 1 für '\0'
     int gruendungsjahr;
     float umsatz;
 };
@@ -15,7 +16,8 @@ int countCapitals(const char *text);
 void eingabeFirma(struct Firma *f);
 void writeStruct(struct Firma f);
 
-int main() {
+int main()
+{
     // Aufgabe 2: VonBis()
     int summe = VonBis();
     printf("Die Summe der positiven Zahlen im Bereich ist: %d\n\n", summe);
@@ -23,9 +25,9 @@ int main() {
     // Aufgabe 3: countCapitals()
     char text[100];
     printf("Bitte geben Sie einen Text ein: ");
-    getchar(); // Puffer leeren
+    getchar();                        // Puffer leeren
     fgets(text, sizeof(text), stdin); // Eingabe mit Leerzeichen
-    //scanf(" %[^\n]", text); // Eingabe mit Leerzeichen und Zeilenumbruch
+    // scanf(" %[^\n]", text); // Eingabe mit Leerzeichen und Zeilenumbruch
     int grossbuchstaben = countCapitals(text);
     printf("Anzahl der Großbuchstaben: %d\n\n", grossbuchstaben);
 
@@ -40,7 +42,8 @@ int main() {
 }
 
 // Aufgabe 2: VonBis()
-int VonBis() {
+int VonBis()
+{
     int untergrenze, obergrenze, summe = 0;
 
     printf("Untergrenze: ");
@@ -48,32 +51,40 @@ int VonBis() {
     printf("Obergrenze: ");
     scanf("%d", &obergrenze);
 
-    if (untergrenze > obergrenze) {
+    if (untergrenze > obergrenze)
+    {
         int temp = untergrenze;
         untergrenze = obergrenze;
         obergrenze = temp;
     }
 
-    for (int i = untergrenze; i <= obergrenze; i++) {
+    for (int i = untergrenze; i <= obergrenze; i++)
+    {
         printf("%d %s\n", i, (i % 2 == 0) ? "gerade" : "ungerade");
-        if (i > 0) summe += i;
+        if (i > 0)
+            summe += i;
     }
 
     return summe;
 }
 
 // Aufgabe 3: countCapitals()
-int countCapitals(const char *text) {
+int countCapitals(const char *text)
+{
     int count = 0;
-    for (int i = 0; text[i] != '\0'; i++) {
-        if (text[i] >= 'A' && text[i] <= 'Z') count++;
+    for (int i = 0; text[i] != '\0'; i++)
+    {
+        if (text[i] >= 'A' && text[i] <= 'Z')
+            count++;
     }
     return count;
 }
 
 // Aufgabe 4: Firma einlesen und anzeigen
-void eingabeFirma(struct Firma *f) {
-    while (getchar() != '\n'); // Eingabepuffer leeren nach scanf()
+void eingabeFirma(struct Firma *f)
+{
+    while (getchar() != '\n')
+        ; // Eingabepuffer leeren nach scanf()
 
     printf("Firmenname: ");
     fgets(f->name, sizeof(f->name), stdin);
@@ -97,18 +108,19 @@ void eingabeFirma(struct Firma *f) {
     printf("Umsatz: %.2f\n\n", f->umsatz);
 }
 
-
 // Aufgabe 5: writeStruct()
-void writeStruct(struct Firma f) {
+void writeStruct(struct Firma f)
+{
     FILE *datei = fopen("firmen.dat", "a"); // anhängen
-    if (datei == NULL) {
+    if (datei == NULL)
+    {
         printf("Fehler beim Öffnen der Datei.\n");
         return;
     }
 
     fprintf(datei, "Name: %s\nOrt: %s\nJahr: %d\nUmsatz: %.2f\n---\n",
             f.name, f.ort, f.gruendungsjahr, f.umsatz);
-    
+
     fclose(datei);
     printf("Daten wurden in 'firmen.dat' gespeichert.\n");
 }
