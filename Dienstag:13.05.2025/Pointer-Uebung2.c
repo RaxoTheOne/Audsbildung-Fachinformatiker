@@ -17,9 +17,15 @@ int main()
     
     *p += 1; // Zeiger auf Adresse, Wert um 1 erhöhen
     printf("Zeigt auf Adresse %p Inhalt %s\n", p, p);*/
-    for(p = str; *p != '\0'; p++)
+    /*for(p = str; *p != '\0'; p++)
+    {
+        printf("Zeigt auf Adresse %p Inhalt %c\n", p, *p);
+    }*/
+    // Zeiger auf int
+   for(p = str; *p != '\0'; p++, (*p)++)
     {
         printf("Zeigt auf Adresse %p Inhalt %c\n", p, *p);
     }
+    
     return 0;
 }
